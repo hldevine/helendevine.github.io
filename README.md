@@ -1,6 +1,6 @@
 # helendevine.github.io
 
-Personal academic website. 
+Personal academic website. Plain static files — no build step.
 
 ## Update content
 Almost everything (publications, talks, news, CV entries, social links) lives in **`content.js`**. Edit it on github.com (pencil icon → Commit) and the site updates in ~1 minute.
@@ -15,7 +15,7 @@ The About text and research-area descriptions are in `index.dc.html` (search for
 
 ## Publish on GitHub Pages (one time)
 1. Create a GitHub repo named **`<your-username>.github.io`** (public).
-2. Upload every file and folder in this project (keep the folder structure: `index.html`, `index.dc.html`, `content.js`, `support.js`, `assets/`, `_ds/`).
+2. Upload every file and folder in this project (keep the folder structure: `index.html`, `index.dc.html`, `content.js`, `support.js`, `assets/`, `ds/`).
 3. Repo → Settings → Pages → Source: *Deploy from a branch* → `main` / root → Save.
 4. Your site is live at `https://<your-username>.github.io`.
 
@@ -37,4 +37,10 @@ All posters, slides and application PDFs now link to `assets/docs/`. Download ea
 | `devine_yale.pdf` | | media_files/18450 |
 | `devine_gradcv.pdf` | | media_files/18452 |
 
+Also: `assets/Devine_CV.pdf` (main CV) is already in place.
+
 If a file isn't a PDF (e.g. slides as .pptx), either export it to PDF or change the extension in `content.js` / `index.dc.html` to match.
+
+## Links that stay external (fine as-is)
+Google Drive talk video, post-bacc Google Doc, Slack invite, Substack, OSF, journal DOIs.
+**Check sharing:** the Drive video and Google Doc must be set to *Anyone with the link → Viewer*.
