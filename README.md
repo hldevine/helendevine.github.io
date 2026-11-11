@@ -1,6 +1,6 @@
 # helendevine.github.io
 
-Personal academic website. Plain static files — no build step.
+Personal academic website. 
 
 ## Update content
 Almost everything (publications, talks, news, CV entries, social links) lives in **`content.js`**. Edit it on github.com (pencil icon → Commit) and the site updates in ~1 minute.
@@ -37,10 +37,4 @@ All posters, slides and application PDFs now link to `assets/docs/`. Download ea
 | `devine_yale.pdf` | | media_files/18450 |
 | `devine_gradcv.pdf` | | media_files/18452 |
 
-Also: `assets/Devine_CV.pdf` (main CV) is already in place.
-
 If a file isn't a PDF (e.g. slides as .pptx), either export it to PDF or change the extension in `content.js` / `index.dc.html` to match.
-
-## Links that stay external (fine as-is)
-Google Drive talk video, post-bacc Google Doc, Slack invite, Substack, OSF, journal DOIs.
-**Check sharing:** the Drive video and Google Doc must be set to *Anyone with the link → Viewer*.
