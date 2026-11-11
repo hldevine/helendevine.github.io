@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Helen Devine — Social Psychology, Yale University</title>
+<meta name="description" content="Helen Devine is a social psychology PhD student at Yale University and NSF Graduate Research Fellow studying victim blaming, moral psychology, and psychology &amp; law.">
+<link rel="stylesheet" href="_ds/modernist-56510bf5-2425-49e9-85e1-d3400d9256f3/styles.css">
+<script src="_ds/modernist-56510bf5-2425-49e9-85e1-d3400d9256f3/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&amp;display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;transition:background .2s,color .2s}
+a{color:var(--color-accent-700)}
+a:hover{color:var(--color-accent)}
+</style>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;text-wrap:pretty">
+
+<header class="nav" style="position:sticky;top:0;z-index:10;background:var(--color-bg);flex-wrap:wrap;row-gap:8px;padding:14px max(24px, calc((100% - 1232px) / 2))">
+  <a href="#/" class="nav-brand" style="font-size:20px;letter-spacing:-0.02em">Helen Devine</a>
+  <nav style="display:flex;flex-wrap:wrap;align-items:center;gap:20px">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <a href="{{ n.href }}" aria-current="{{ n.current }}" style="font-weight:600;font-family:var(--font-heading)">{{ n.label }}</a>
+    </sc-for>
+  </nav>
+  <button class="btn btn-secondary btn-icon" onClick="{{ toggleDark }}" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <sc-if value="{{ dark }}" hint-placeholder-val="{{ false }}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    </sc-if>
+    <sc-if value="{{ light }}" hint-placeholder-val="{{ true }}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+    </sc-if>
+  </button>
+</header>
+
+<div style="flex:1;width:100%;max-width:1280px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:{{ shellWrap }};gap:0 {{ shellGap }};align-items:flex-start">
+<aside data-screen-label="Profile sidebar" style="flex:0 0 {{ asideW }};width:{{ asideW }};position:{{ asidePos }};top:90px;margin-top:24px;max-height:{{ asideMax }};overflow-y:auto;scrollbar-width:none;padding:24px 16px;display:flex;flex-direction:column;gap:16px;background:var(--side-bg);--color-text:var(--side-text);--color-bg:var(--side-bg);--color-accent:var(--side-accent);--color-accent-600:var(--side-accent-600);--color-accent-700:var(--side-accent-700);--color-divider:var(--side-divider);color:var(--side-text)">
+  <a href="#/" style="display:block;width:100%;max-width:160px;border:2px solid var(--color-divider);align-self:center;margin:0 auto">
+    <img src="assets/headshot.png" alt="Portrait of Helen Devine" style="width:100%;aspect-ratio:1 / 1;object-fit:cover;object-position:50% 22%">
+  </a>
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <div style="font-size:32px;font-weight:800;font-family:var(--font-heading);line-height:1;letter-spacing:-0.03em">Helen Devine</div>
+    <div style="font-size:16px;font-weight:800;font-family:var(--font-heading);line-height:1.25;color:var(--color-accent-700)">Social Psychology PhD Student</div>
+    <div style="font-size:15px;font-weight:600;line-height:1.3">Yale University</div>
+    <div style="font-size:13px" class="text-muted">NSF Graduate Research Fellow</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid var(--color-divider)">
+    <a href="mailto:helen.devine@yale.edu" style="font-size:14px;font-weight:600;padding:8px 0;border-bottom:1px solid var(--color-divider);text-decoration:none;overflow-wrap:anywhere">helen.devine<wbr>@yale.edu</a>
+    <sc-for list="{{ socials }}" as="s" hint-placeholder-count="5">
+      <a href="{{ s.url }}" target="_blank" rel="noopener" style="font-size:14px;padding:7px 0;border-bottom:1px solid var(--color-divider);color:inherit;text-decoration:none;display:flex;justify-content:space-between" style-hover="color:var(--color-accent)"><span>{{ s.label }}</span><span>↗</span></a>
+    </sc-for>
+  </div>
+  <a href="assets/Devine_CV.pdf" target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:space-between;padding:10px 14px">Download CV <span>↓</span></a>
+</aside>
+<main style="flex:1 1 0;min-width:0">
+
+<!-- ═════════ HOME ═════════ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Home">
+  <section style="padding:48px 0 40px;display:flex;flex-direction:column;gap:24px">
+    <h6 style="margin:0;color:var(--color-accent-700)">Research</h6>
+    <p style="font-size:clamp(20px, 2.2vw, 26px);font-weight:800;font-family:var(--font-heading);line-height:1.25;letter-spacing:-0.01em;max-width:30em;margin:0">I study how fear, threat, and bias shape the way we judge victims and wrongdoing — at the meeting point of moral psychology, implicit social cognition, and the law.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="#/research" class="btn btn-primary" style="min-width:200px;justify-content:space-between;padding:12px 16px;font-size:15px">Explore my research <span>→</span></a>
+      <a href="#/publications" class="btn btn-secondary" style="min-width:160px;justify-content:space-between;padding:12px 16px;font-size:15px">Publications <span>→</span></a>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-wrap:wrap;gap:24px 40px;padding:48px 0;border-top:2px solid var(--color-divider)">
+    <h6 style="flex:0 0 96px;margin:0;padding-top:4px">About</h6>
+    <div style="flex:1 1 420px;max-width:760px;font-size:17px;line-height:1.6">
+      <p>I'm a <strong>social psychology PhD student at Yale University</strong> with Dr. Melissa Ferguson in the <a href="https://fergusonlab.com/" target="_blank" rel="noopener">Implicit Social Cognition Lab</a>. I am an NSF Graduate Research Fellow (GRFP).</p>
+      <p>Previously, I was a lab manager in the <a href="https://www.deepestbeliefslab.com/" target="_blank" rel="noopener">Deepest Beliefs Lab</a> (PI: Dr. Kurt Gray) at The Ohio State University and the University of North Carolina at Chapel Hill. I completed my B.S. in Biopsychology, Cognition, and Neuroscience at the University of Michigan, Ann Arbor, where I was also lab manager in the <a href="https://sites.lsa.umich.edu/whirl/" target="_blank" rel="noopener">Well-Being, Health, and Interpersonal Relationships Lab</a> (PI: Dr. Amie M. Gordon).</p>
+      <p style="margin:0">My research interests span moral psychology, victim blaming, implicit social cognition, and the psychology of law — with a focus on how fear, threat, and bias shape judgments about victims and wrongdoing.</p>
+    </div>
+  </section>
+
+  <section style="border-top:2px solid var(--color-divider);display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr));gap:2px;background:var(--color-divider);border-bottom:2px solid var(--color-divider)">
+    <div style="background:var(--color-bg);padding:40px 32px 40px 0;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h6 style="margin:0">Latest news</h6><a href="#/news" style="font-size:14px;font-weight:600">All news →</a></div>
+      <sc-for list="{{ latestNews }}" as="n" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:84px minmax(0, 1fr);gap:12px;padding-top:12px;border-top:1px solid var(--color-divider)">
+          <div style="font-size:13px;font-weight:600">{{ n.when }}</div>
+          <div style="font-size:15px">{{ n.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:var(--color-bg);padding:40px 0 40px 32px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h6 style="margin:0">Recent publications</h6><a href="#/publications" style="font-size:14px;font-weight:600">All publications →</a></div>
+      <sc-for list="{{ recentPubs }}" as="p" hint-placeholder-count="3">
+        <a href="{{ p.doiUrl }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:4px;padding-top:12px;border-top:1px solid var(--color-divider);color:inherit;text-decoration:none">
+          <span style="font-weight:800;font-family:var(--font-heading);font-size:17px;line-height:1.25" style-hover="color:var(--color-accent)">{{ p.title }}</span>
+          <span style="font-size:13px;font-style:italic" class="text-muted">{{ p.venue }}, {{ p.year }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ═════════ RESEARCH ═════════ -->
+<sc-if value="{{ isResearch }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Research">
+  <section style="padding:56px 0 40px;display:flex;flex-direction:column;gap:16px">
+    <h6 style="margin:0;color:var(--color-accent-700)">Research</h6>
+    <h1 style="font-size:clamp(28px, 3.4vw, 40px);line-height:1.1;letter-spacing:-0.02em;margin:0;display:flex;align-items:center;gap:20px"><img src="assets/stamps/research.svg" alt="" style="flex:none;width:clamp(52px, 5vw, 68px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));transition:transform .25s" style-hover="transform:rotate(3deg) scale(1.08)"><span>Who counts as a victim — and who gets the blame?</span></h1>
+  </section>
+  <section style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr));gap:2px;background:var(--color-divider);border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+    <div style="background:var(--color-bg);padding:32px 32px 32px 0;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:40px;font-weight:800;font-family:var(--font-heading);color:var(--color-accent);line-height:1">01</div>
+      <h3 style="margin:0">Victims &amp; blame</h3>
+      <p style="margin:0">Why do we sometimes hold people responsible for the harm they experienced? I study how fear of crime, true-crime media, and assumptions about vulnerability shape moral judgments of victims.</p>
+      <sc-for list="{{ research.victims.items }}" as="w" hint-placeholder-count="3">
+        <div style="font-size:14px;padding-top:8px;border-top:1px solid var(--color-divider)"><span style="font-weight:600">{{ w.title }}</span> <span class="text-muted">— {{ w.meta }}</span></div>
+      </sc-for>
+      <button class="btn btn-ghost" onClick="{{ research.victims.go }}" style="align-self:flex-start;padding-left:0">See all {{ research.victims.count }} presentations →</button>
+    </div>
+    <div style="background:var(--color-bg);padding:32px 0 32px 32px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:40px;font-weight:800;font-family:var(--font-heading);color:var(--color-accent);line-height:1">02</div>
+      <h3 style="margin:0">Psychology &amp; law</h3>
+      <p style="margin:0">Legal decisions hinge on human judgment. I study consent under social pressure (“Can I search your car?”), how victimhood is weighed in legal decisions, and how people judge deception.</p>
+      <sc-for list="{{ research.law.items }}" as="w" hint-placeholder-count="3">
+        <div style="font-size:14px;padding-top:8px;border-top:1px solid var(--color-divider)"><span style="font-weight:600">{{ w.title }}</span> <span class="text-muted">— {{ w.meta }}</span></div>
+      </sc-for>
+      <button class="btn btn-ghost" onClick="{{ research.law.go }}" style="align-self:flex-start;padding-left:0">See all {{ research.law.count }} presentations →</button>
+    </div>
+    <div style="background:var(--color-bg);padding:32px 32px 32px 0;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:40px;font-weight:800;font-family:var(--font-heading);color:var(--color-accent);line-height:1">03</div>
+      <h3 style="margin:0">Morality &amp; AI</h3>
+      <p style="margin:0">As LLMs enter every part of our lives, I study how AI affects our relationships and decision-making.</p>
+      <sc-for list="{{ research.moral.items }}" as="w" hint-placeholder-count="3">
+        <div style="font-size:14px;padding-top:8px;border-top:1px solid var(--color-divider)"><span style="font-weight:600">{{ w.title }}</span> <span class="text-muted">— {{ w.meta }}</span></div>
+      </sc-for>
+      <button class="btn btn-ghost" onClick="{{ research.moral.go }}" style="align-self:flex-start;padding-left:0">See all {{ research.moral.count }} presentations →</button>
+    </div>
+    <div style="background:var(--color-bg);padding:32px 0 32px 32px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:40px;font-weight:800;font-family:var(--font-heading);color:var(--color-accent);line-height:1">04</div>
+      <h3 style="margin:0">Close relationships</h3>
+      <p style="margin:0">My earlier work in Michigan’s WHIRLab focused on couples, caregiving, sleep, and physiology — how partners support one another and divide the load of new parenthood.</p>
+      <sc-for list="{{ research.relationships.items }}" as="w" hint-placeholder-count="3">
+        <div style="font-size:14px;padding-top:8px;border-top:1px solid var(--color-divider)"><span style="font-weight:600">{{ w.title }}</span> <span class="text-muted">— {{ w.meta }}</span></div>
+      </sc-for>
+      <button class="btn btn-ghost" onClick="{{ research.relationships.go }}" style="align-self:flex-start;padding-left:0">See all {{ research.relationships.count }} presentations →</button>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ═════════ PUBLICATIONS ═════════ -->
+<sc-if value="{{ isPubs }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Publications">
+  <section style="padding:56px 0 32px;display:flex;flex-direction:column;gap:16px">
+    <h6 style="margin:0;color:var(--color-accent-700)">Publications</h6>
+    <h1 style="font-size:clamp(28px, 3.4vw, 40px);line-height:1.1;letter-spacing:-0.02em;margin:0;display:flex;align-items:center;gap:20px"><img src="assets/stamps/writing.svg" alt="" style="flex:none;width:clamp(52px, 5vw, 68px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));transition:transform .25s" style-hover="transform:rotate(3deg) scale(1.08)"><span>Writing</span></h1>
+  </section>
+    <sc-if value="{{ showPubs }}" hint-placeholder-val="{{ true }}">
+  <section style="padding:24px 0 8px">
+    <h6 style="margin:0 0 8px">Peer-reviewed<br></h6>
+    <sc-for list="{{ pubs }}" as="p" hint-placeholder-count="4">
+      <article style="display:grid;grid-template-columns:72px minmax(0, 1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--color-divider)">
+        <div style="font-weight:800;font-family:var(--font-heading);font-size:22px;color:var(--color-accent);line-height:1.2">{{ p.year }}</div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+          <div style="display:flex;gap:16px;justify-content:space-between;align-items:flex-start">
+            <a href="{{ p.doiUrl }}" target="_blank" rel="noopener" style="font-weight:800;font-family:var(--font-heading);font-size:19px;line-height:1.25;color:inherit;text-decoration:none" style-hover="color:var(--color-accent)">{{ p.title }}</a>
+            <sc-if value="{{ p.hasDoi }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ p.doiUrl }}" target="_blank" rel="noopener" aria-label="Open paper" style="flex:none;font-size:20px;line-height:1;text-decoration:none;color:var(--color-accent)">↗</a>
+            </sc-if>
+          </div>
+          <div style="font-size:15px;line-height:1.55" class="text-muted">{{ p.pre }}<strong style="color:var(--color-text)">{{ p.me }}</strong>{{ p.post }} ({{ p.year }}). {{ p.title }}. <em>{{ p.venue }}</em>.<sc-if value="{{ p.hasDoi }}" hint-placeholder-val="{{ true }}"> <a href="{{ p.doiUrl }}" target="_blank" rel="noopener" style="overflow-wrap:anywhere">{{ p.doiUrl }}</a></sc-if></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:2px">
+            <sc-if value="{{ p.hasOpen }}" hint-placeholder-val="{{ false }}"><div title="Open science" style="display:flex;gap:4px;padding:4px;border:1px solid var(--color-divider)">
+              <sc-for list="{{ p.badges }}" as="b" hint-placeholder-count="4">
+                <a href="{{ b.href }}" target="_blank" rel="noopener" title="{{ b.title }}" aria-label="{{ b.title }}" style="min-width:26px;height:26px;padding:0 6px;display:flex;align-items:center;gap:6px;text-decoration:none;background:var(--color-accent);color:var(--color-bg);font-family:var(--font-heading);font-weight:800;font-size:12px" style-hover="background:var(--color-accent-600)"><sc-if value="{{ b.isOsf }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><rect x="4" y="11" width="16" height="10"></rect><path d="M8 11V7a4 4 0 0 1 7.5-2"></path></svg>Open science · OSF ↗</sc-if><sc-if value="{{ b.isPrereg }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M20 6 9 17l-5-5"></path></svg></sc-if><sc-if value="{{ b.isData }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M6 20V10M12 20V4M18 20v-6"></path></svg></sc-if><sc-if value="{{ b.isMaterials }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M3 7l9-4 9 4-9 4-9-4z"></path><path d="M7 9v6l5 3 5-3V9"></path></svg></sc-if><sc-if value="{{ b.isCode }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"></path></svg></sc-if></a>
+              </sc-for>
+            </div></sc-if>
+            <button class="btn btn-secondary" onClick="{{ p.copy }}" style="font-size:13px;padding:8px 12px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12"></rect><path d="M5 15H3V3h12v2"></path></svg>{{ p.copyLabel }}</button>
+            <sc-if value="{{ p.hasAbstract }}" hint-placeholder-val="{{ false }}">
+              <button class="btn btn-secondary" onClick="{{ p.toggle }}" aria-expanded="{{ p.open }}" style="font-size:13px;padding:8px 12px">Abstract {{ p.chev }}</button>
+            </sc-if>
+            <sc-if value="{{ p.hasPodcast }}" hint-placeholder-val="{{ false }}">
+              <a class="btn btn-secondary" href="{{ p.podcast }}" target="_blank" rel="noopener" style="font-size:13px;padding:8px 12px">▸ Podcast</a>
+            </sc-if>
+          </div>
+          <sc-if value="{{ p.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:4px 0 0;font-size:15px;max-width:52em;padding:16px;background:var(--color-surface)">{{ p.abstract }}</p>
+          </sc-if>
+        </div>
+      </article>
+    </sc-for>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ showWriting }}" hint-placeholder-val="{{ true }}">
+  <section style="padding:32px 0 8px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:8px">
+      <h6 style="margin:0">Science writing</h6>
+      
+    </div>
+    <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ true }}">
+      <sc-for list="{{ featuredW }}" as="f" hint-placeholder-count="1">
+        <a href="{{ f.url }}" target="_blank" rel="noopener" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;padding:24px 28px;margin-bottom:16px;background:var(--brand-navy, #00356b);color:var(--brand-on, #ffffff);text-decoration:none" style-hover="background:var(--color-accent-800, #00224a);color:var(--brand-on, #ffffff)">
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px">
+            <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;opacity:0.85">★ Featured · {{ f.when }}</div>
+            <div style="font-weight:800;font-family:var(--font-heading);font-size:clamp(20px, 2.2vw, 26px);line-height:1.15;letter-spacing:-0.01em">{{ f.title }}</div>
+            <div style="font-size:14px;opacity:0.85">{{ f.authors }}</div>
+          </div>
+          <span style="font-weight:700;font-size:14px;border:2px solid currentColor;padding:8px 14px;white-space:nowrap">Read on Substack ↗</span>
+        </a>
+      </sc-for>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr));gap:2px;background:var(--color-divider);border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+      <sc-for list="{{ writing }}" as="w" hint-placeholder-count="6">
+        <div style="background:var(--color-bg);padding:16px 20px;display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:12px" class="text-muted">{{ w.when }}</div>
+          <a href="{{ w.url }}" target="_blank" rel="noopener" style="font-weight:800;font-family:var(--font-heading);font-size:16px;line-height:1.25;color:inherit;text-decoration:none" style-hover="color:var(--color-accent)">{{ w.title }} ↗</a>
+          <div style="font-size:13px" class="text-muted">{{ w.authors }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ noPubs }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:48px 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+      <div style="font-weight:800;font-family:var(--font-heading);font-size:20px">Nothing matches that search.</div>
+      <button class="btn btn-secondary" onClick="{{ resetFilters }}">Clear filters</button>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ═════════ TALKS ═════════ -->
+<sc-if value="{{ isTalks }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Talks">
+  <section style="padding:56px 0 32px;display:flex;flex-direction:column;gap:16px">
+    <h6 style="margin:0;color:var(--color-accent-700)">Talks &amp; posters</h6>
+    <h1 style="font-size:clamp(28px, 3.4vw, 40px);line-height:1.1;letter-spacing:-0.02em;margin:0;display:flex;align-items:center;gap:20px"><img src="assets/stamps/presentations.svg" alt="" style="flex:none;width:clamp(52px, 5vw, 68px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));transition:transform .25s" style-hover="transform:rotate(3deg) scale(1.08)"><span>Presentations</span></h1>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:14px;padding:20px 0;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+      <div class="seg" style="flex-wrap:wrap">
+        <sc-for list="{{ tkinds }}" as="o" hint-placeholder-count="4">
+          <label class="seg-opt"><input type="radio" name="tkind" checked="{{ o.on }}" onChange="{{ o.pick }}">{{ o.label }}</label>
+        </sc-for>
+      </div>
+      <div class="seg" style="flex-wrap:wrap">
+        <sc-for list="{{ roles }}" as="o" hint-placeholder-count="3">
+          <label class="seg-opt"><input type="radio" name="role" checked="{{ o.on }}" onChange="{{ o.pick }}">{{ o.label }}</label>
+        </sc-for>
+      </div>
+      <span style="margin-left:auto;font-size:13px" class="text-muted">{{ talkCount }}</span>
+    </div>
+  </section>
+  <section style="padding:8px 0 24px">
+    <sc-for list="{{ talks }}" as="t" hint-placeholder-count="6">
+      <article style="display:grid;grid-template-columns:96px minmax(0, 1fr);gap:16px;padding:20px 0;border-bottom:1px solid var(--color-divider)">
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+          <div style="font-weight:800;font-family:var(--font-heading);font-size:15px">{{ t.when }}</div>
+          <span class="tag tag-neutral">{{ t.kind }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <sc-if value="{{ t.hasAward }}" hint-placeholder-val="{{ false }}">
+            <div><span class="tag tag-outline">★ {{ t.award }}</span></div>
+          </sc-if>
+          <div style="font-weight:800;font-family:var(--font-heading);font-size:18px;line-height:1.25">{{ t.title }}</div>
+          <div style="font-size:14px">{{ t.pre }}<strong>{{ t.me }}</strong>{{ t.post }}</div>
+          <div style="font-size:14px" class="text-muted">{{ t.venue }} · {{ t.place }}</div>
+          <sc-if value="{{ t.hasLinks }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+              <sc-for list="{{ t.links }}" as="l" hint-placeholder-count="1">
+                <a class="btn btn-secondary" href="{{ l.url }}" target="_blank" rel="noopener" style="font-size:13px;padding:6px 10px">{{ l.label }} ↗</a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </article>
+    </sc-for>
+    <sc-if value="{{ noTalks }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:48px 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <div style="font-weight:800;font-family:var(--font-heading);font-size:20px">No presentations match these filters.</div>
+        <button class="btn btn-secondary" onClick="{{ resetFilters }}">Clear filters</button>
+      </div>
+    </sc-if>
+  </section>
+</div>
+</sc-if>
+
+<!-- ═════════ NEWS ═════════ -->
+<sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="News">
+  <section style="padding:56px 0 32px;display:flex;flex-direction:column;gap:16px">
+    <h6 style="margin:0;color:var(--color-accent-700)">News</h6>
+    <h1 style="font-size:clamp(28px, 3.4vw, 40px);line-height:1.1;letter-spacing:-0.02em;margin:0;display:flex;align-items:center;gap:20px"><img src="assets/stamps/news.svg" alt="" style="flex:none;width:clamp(52px, 5vw, 68px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));transition:transform .25s" style-hover="transform:rotate(3deg) scale(1.08)"><span>What’s new!</span></h1>
+  </section>
+  <sc-for list="{{ newsGroups }}" as="g" hint-placeholder-count="3">
+    <section style="display:flex;flex-wrap:wrap;gap:16px 40px;padding:32px 0;border-top:2px solid var(--color-divider)">
+      <div style="flex:1 1 160px;font-size:48px;font-weight:800;font-family:var(--font-heading);line-height:1;letter-spacing:-0.03em">{{ g.year }}</div>
+      <div style="flex:4 1 480px;display:flex;flex-direction:column">
+        <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:56px minmax(0, 1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--color-divider)">
+            <div style="font-size:13px;font-weight:600;padding-top:2px">{{ n.month }}</div>
+            <div style="font-size:16px">{{ n.text }}
+              <sc-if value="{{ n.hasUrl }}" hint-placeholder-val="{{ false }}"> <a href="{{ n.url }}" target="_blank" rel="noopener" style="font-weight:600;white-space:nowrap">Read more ↗</a></sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-for>
+</div>
+</sc-if>
+
+<!-- ═════════ RESOURCES ═════════ -->
+<sc-if value="{{ isResources }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Resources">
+  <section style="padding:56px 0 32px;display:flex;flex-direction:column;gap:16px">
+    <h1 style="font-size:clamp(28px, 3.4vw, 40px);line-height:1.1;letter-spacing:-0.02em;margin:0;display:flex;align-items:center;gap:20px"><img src="assets/stamps/resources.svg" alt="" style="flex:none;width:clamp(52px, 5vw, 68px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));transition:transform .25s" style-hover="transform:rotate(3deg) scale(1.08)"><span>Resources</span></h1>
+    <p style="font-size:19px;max-width:40em;margin:0">for post-bacc and phd positions</p>
+  </section>
+
+  <div style="display:flex;flex-wrap:wrap;gap:24px 32px;align-items:flex-start;border-top:2px solid var(--color-divider);padding-top:32px">
+    <aside style="flex:0 0 168px;position:{{ tocPos }};top:84px;font-size:13px;display:flex;flex-direction:column;gap:2px">
+      <h6 style="margin:0 0 8px">On this page</h6>
+      <sc-for list="{{ toc }}" as="t" hint-placeholder-count="11">
+        <button onClick="{{ t.onClick }}" style="all:unset;cursor:pointer;font-size:13px;font-weight:600;padding:5px 0;line-height:1.3;border-bottom:1px solid var(--color-divider)" style-hover="color:var(--color-accent)">{{ t.label }}</button>
+      </sc-for>
+    </aside>
+
+    <article style="flex:3 1 560px;max-width:760px;min-width:0;display:flex;flex-direction:column;gap:40px;font-size:16px;line-height:1.65">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0">Hi! I’m Helen, a PhD student in social psychology. My research sits at the intersection of psychology &amp; law and moral psychology; I’m interested in questions about victimhood, blame &amp; responsibility, and legal decision-making. ⚖️🧠</p>
+        <p style="margin:0">Before applying for a PhD this past fall, I was a lab manager for four years, and spent a lot of time compiling resources on applying for post-bacc and PhD positions. Finding and applying to both kinds of roles is really challenging, especially if you’re not in a position with direct mentors who can guide you. There’s a lot about this process that is unspoken.</p>
+        <p style="margin:0">With that in mind, I wanted to compile my sample applications and tips that helped me.</p>
+        <p style="margin:0;font-size:14px;font-style:italic" class="text-muted">⭐ Huge credit to those who have made guides like this and inspired mine, especially: <a href="https://lucylai.com/blog/gradapps" target="_blank" rel="noopener">Dr. Lucy Lai</a>, <a href="https://www.clairewhiting.com/resources/applying-to-psych-phds" target="_blank" rel="noopener">Claire Whiting</a>, and <a href="https://www.alexhunterlang.com/nsf-fellowship" target="_blank" rel="noopener">Dr. Alex Lang</a>.</p>
+      </div>
+
+      <section id="res-slack" style="background:var(--brand-navy, #00356b);color:var(--brand-on, #ffffff);padding:28px;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0">I also created a Slack Workspace to post crowdsourced listings easily in one place. If you're a potential applicant, OR a current lab manager, grad student, or PI, please consider joining! It takes 2 seconds to drop a link to an opportunity and you can turn other notifications off easily.</p>
+        <a href="https://join.slack.com/t/postbacc-psych-jobs/shared_invite/zt-3vl8gubw4-DrDQG~voc~uFyptKFJ88Fw" target="_blank" rel="noopener" class="btn" style="align-self:flex-start;min-width:220px;justify-content:space-between;padding:12px 16px;font-size:15px;background:var(--brand-on, #ffffff);color:var(--brand-navy, #00356b)">Join the Post-Bacc Psychology Slack here! <span>↗</span></a>
+      </section>
+
+      <section id="res-apps" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">Quick Links to my Applications</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 180px), 1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+          <a href="assets/docs/devine_managerapp.pdf" target="_blank" rel="noopener" style="background:var(--color-bg);padding:16px;display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:inherit;font-weight:800;font-family:var(--font-heading)" style-hover="background:var(--color-surface)"><span>Lab manager</span><span>↗</span></a>
+          <a href="assets/docs/devine_gradcv.pdf" target="_blank" rel="noopener" style="background:var(--color-bg);padding:16px;display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:inherit;font-weight:800;font-family:var(--font-heading)" style-hover="background:var(--color-surface)"><span>PhD CV</span><span>↗</span></a>
+          <a href="assets/docs/devine_yale.pdf" target="_blank" rel="noopener" style="background:var(--color-bg);padding:16px;display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:inherit;font-weight:800;font-family:var(--font-heading)" style-hover="background:var(--color-surface)"><span>Yale essay</span><span>↗</span></a>
+          <a href="assets/docs/devine_ucla.pdf" target="_blank" rel="noopener" style="background:var(--color-bg);padding:16px;display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:inherit;font-weight:800;font-family:var(--font-heading)" style-hover="background:var(--color-surface)"><span>UCLA essays</span><span>↗</span></a>
+          <a href="assets/docs/devine_cornell.pdf" target="_blank" rel="noopener" style="background:var(--color-bg);padding:16px;display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:inherit;font-weight:800;font-family:var(--font-heading)" style-hover="background:var(--color-surface)"><span>Cornell essays</span><span>↗</span></a>
+          <a href="assets/docs/devine_nsfgrfp.pdf" target="_blank" rel="noopener" style="background:var(--color-bg);padding:16px;display:flex;justify-content:space-between;gap:8px;text-decoration:none;color:inherit;font-weight:800;font-family:var(--font-heading)" style-hover="background:var(--color-surface)"><span>NSF GRFP</span><span>↗</span></a>
+        </div>
+      </section>
+
+      <section id="res-postbacc" style="display:flex;flex-direction:column;gap:12px;border-top:2px solid var(--color-divider);padding-top:32px">
+        <h2 style="margin:0">Applying for a Post-Bachelor’s Position in Psychology</h2>
+        <p style="margin:0;font-size:15px;padding:14px 16px;background:var(--color-surface);font-style:italic">Note: Post-bacc / post-grad / pre-doc positions all mean the same thing. Different labs and institutions use different labels: But they all generally mean a paid, part- or full-time research position intended to be held between completing your undergraduate and graduate degree.</p>
+        <p style="margin:0">These positions are becoming more popular as a way to gain experience and hone your research interests before beginning a PhD program.</p>
+        <p style="margin:0">I’ve been a lab manager in two social psychology labs: the <a href="https://sites.lsa.umich.edu/whirl/" target="_blank" rel="noopener">WHIRLab</a> for my final two years in undergrad, and the <a href="https://www.deepestbeliefslab.com/" target="_blank" rel="noopener">Deepest Beliefs Lab</a> for two years between undergrad and grad school. In both labs, I led the review and interview process for my replacement, and in doing so, came up with some tips for how to secure a position.</p>
+      </section>
+
+      <section id="res-finding" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">Finding Positions to Apply For</h3>
+        <p style="margin:0">There isn’t a central location for post-bacc positions to be advertised. In my experience, the best ways to find them are:</p>
+        <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px">
+          <li>Continually check job wikis/boards
+            <ol type="a" style="margin:4px 0 0;padding-left:20px"><li>Great centralized guide <a href="https://docs.google.com/document/d/1HoO1f8yL5u64M0IZQ4yU0lJsTvcqPozC/edit?usp=sharing&amp;ouid=115396301866403750137&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">HERE</a>, created by <a href="https://sampratt99.github.io/sampratt/" target="_blank" rel="noopener">Sam Pratt</a> and maintained by him &amp; myself</li></ol></li>
+          <li>Make an academic Twitter/X and follow everyone in areas you’re interested in
+            <ol type="a" style="margin:4px 0 0;padding-left:20px"><li>A good tip is to find a graduate student or early-career researcher who has similar interests to yours, and then follow everyone they follow ;)</li></ol></li>
+          <li>Cold email current lab managers or PIs for labs you’re interested in</li>
+        </ol>
+        <p style="margin:0">I’d also recommend being open and reminding your advisors (graduate students and PIs) that you’re on the job hunt — they can share opportunities they see with you directly as their peers post them.</p>
+      </section>
+
+      <section id="res-applying" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">Putting Together an Application</h3>
+        <p style="margin:0">Most post-bacc positions will ask for an academic CV/resume, cover letter, and references (usually 2, sometimes 3). Some may also ask you to complete short answer questions — e.g., write about your future plans, tell us about a project you’ve worked on, why you want to join this lab, etc.</p>
+        <p style="margin:0;font-weight:700;font-style:italic">My lab manager application materials from 2024, including my CV (at the time), cover letter, and second round short answer questions:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="assets/docs/devine_managerapp.pdf" target="_blank" rel="noopener" class="btn btn-primary" style="min-width:180px;justify-content:space-between">Lab Manager Application [2024] <span>↗</span></a></div>
+        <p style="margin:0">Other cover letter and CV examples can also be found on our post-bacc guide <a href="https://docs.google.com/document/d/1HoO1f8yL5u64M0IZQ4yU0lJsTvcqPozC/edit?usp=sharing&amp;ouid=115396301866403750137&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">HERE</a>.</p>
+      </section>
+
+      <section id="res-cold" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">Cold Emailing</h3>
+        <p style="margin:0">I’m pro-cold emailing as long as you do it well. Best case scenario: you get a job! Worst case scenario: you get ghosted. Low risk, high reward.</p>
+        <p style="margin:0">Most post-bacc positions are posted between February - April [<em>usually timed based on grad decisions, since their current lab managers may be deciding to go to grad school or not</em>]. I wouldn’t email any current managers or PIs earlier than February, and definitely make sure they haven’t posted a position clearly anywhere (lab website, social media) before reaching out.</p>
+        <p style="margin:0">Keep the email short and easy to read for the recipient – you don’t necessarily need to attach a CV (I didn’t), and you don’t need to give your full life story if you’re just asking if they’re hiring.</p>
+        <p style="margin:0">Also, address the recipient correctly. If they have a PhD, their title is Dr. [last name]. <a href="https://doi.org/10.1073/pnas.1805284115" target="_blank" rel="noopener">Research has found that</a> men and women are more likely to refer to a male professional with just his last name (like Einstein) than female professionals (like Marie Curie), and this perpetuates gender inequality in the sciences (Atir &amp; Ferguson, 2018). Names and titles matter.</p>
+        <blockquote style="margin:0;padding:4px 0 4px 20px;border-left:2px solid var(--color-accent);font-size:17px;font-style:italic">Colloquially, I was a manager for both a female PI and a male PI at different times, and I can’t tell you how many emails I received addressed to Ms. Female PI instead of Dr. Female PI. Not once did I get Mr. Male PI. Don’t do this!</blockquote>
+        <div style="border:2px solid var(--color-divider)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;border-bottom:2px solid var(--color-divider)">
+            <h6 style="margin:0">Sample Email</h6>
+            <button class="btn btn-secondary" onClick="{{ emails.coldbacc.copy }}" style="font-size:13px;padding:6px 10px">{{ emails.coldbacc.label }}</button>
+          </div>
+          <div id="email-coldbacc" style="padding:16px;font-size:15px;background:var(--color-surface)">
+            <p>Subject: Post-bacc opportunities in X lab?</p>
+            <p>Dear Dr. [Name],</p>
+            <p>I hope this email finds you well! My name is Helen Devine and I am a senior undergraduate at the University of Michigan studying psychology and graduating in May 2024. I currently work as Dr. Amie Gordon's lab manager in a social psychology lab at UMich. I am reaching out to inquire: do you anticipate hiring for a post-bacc position in your lab in the near future?</p>
+            <p>I've greatly enjoyed my time in my current lab, but am looking to gain more research experience in an area more aligned with my research interests in anticipation of attending graduate school in the future. I am very interested in the topics you study and would love to hear about any opportunities in your lab.</p>
+            <p>Thank you for your time and I look forward to connecting!</p>
+            <p style="margin:0">All the best,<br>Helen</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="res-interview" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">You got an interview!</h3>
+        <p style="margin:0">First off all, congratulations!! Getting an interview for these competitive positions is a huge win. Usually, interviews are about 30 minutes, and are held with any combination of the current manager, graduate students, and lab PI. You should be prepared to answer questions about anything from your application (yes, even the tiny project from one bullet on your CV — you never know what the interviewers might find interesting and want to hear more about) and it’s a good idea to prepare for some general questions as well.</p>
+        <p style="margin:0">You’re pretty much guaranteed to be asked at the end if you have any questions for the interviewers. The answer is YES! Asking questions shows your interest, gives you the opportunity to learn more about the lab, and increases the odds of finding something to connect with your interviewer about.</p>
+        <p style="margin:0">There’s no hard and fast rule on what to ask. I’d stay away from questions that could be answered by doing your own research (<em>e.g., if their team is explicitly on their website and you ask “who’s in the lab?”, it might look like you didn’t bother looking them up</em>).</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+          <div style="background:var(--color-bg);padding:16px;display:flex;flex-direction:column;gap:10px">
+            <h6 style="margin:0">Sample questions:</h6>
+            <ul style="margin:0;padding-left:18px;font-size:15px;display:flex;flex-direction:column;gap:6px">
+          <li>Tell us about yourself and why you are interested in joining our lab.</li>
+          <li>What are your long-term goals and in what ways do you think this position will help you achieve those goals?</li>
+          <li>How do you, your experiences, and your background benefit the lab?</li>
+          <li>Tell us about a project that you have worked deeply on. What was the research question, how did you go about answering it, and what did you find?</li>
+          <li>Tell us about a time something didn't go as planned in a project or role you were responsible for. What did you do?</li>
+          <li>What are some areas that you are looking to grow or improve in?</li>
+          <li>Is there a paper or finding from psychology that has really shaped how you think about the field or about people?</li>
+        </ul>
+          </div>
+          <div style="background:var(--color-bg);padding:16px;display:flex;flex-direction:column;gap:10px">
+            <h6 style="margin:0">Some questions I’ve been asked before that stuck out to me:</h6>
+            <ol style="margin:0;padding-left:18px;font-size:15px;display:flex;flex-direction:column;gap:6px">
+          <li>What are some papers from your lab or research area that you would recommend reading to learn more about your research topic?</li>
+          <li>Based on my application and interview, are there any areas you would recommend I work on getting more experience in?</li>
+          <li>What does a typical week look like in this position?</li>
+          <li>How is this position funded, and would the source be affected by any funding cuts or changes? [<em>good question given the current science funding challenges</em>]</li>
+          <li>What does the rest of the review process timeline look like? → <em>Please ask this at the end! It’s a good transition to close the interview, and you want to know the answer ;)</em></li>
+        </ol>
+          </div>
+        </div>
+        <p style="margin:0">This is just my opinion, but I’d advise not spending time asking the interviewers questions that don’t give you a lot of information; like why did they join the lab, what research they’re excited about, why they like the lab, etc. They’re polite and easy for interviewers to answer, but I personally don’t think they tell <em>you</em> as an applicant much unique information. Sure, maybe once in a blue moon an interviewer might say “This lab is a terrible environment, don’t come here!”, but most times it’ll probably just be the same elaboration on “I liked my PI and the topics we study, and I got a job, so I joined.”</p>
+      </section>
+
+      <section id="res-after" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">After the Interview</h3>
+        <p style="margin:0">I highly recommend sending a thank you email within 2 days. Below is a template I used. The idea is to reiterate your interest and bump any of your experiences that you think fit the position based on the feedback you received from the interview.</p>
+        <div style="border:2px solid var(--color-divider)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;border-bottom:2px solid var(--color-divider)">
+            <h6 style="margin:0">Sample Email</h6>
+            <button class="btn btn-secondary" onClick="{{ emails.thanks.copy }}" style="font-size:13px;padding:6px 10px">{{ emails.thanks.label }}</button>
+          </div>
+          <div id="email-thanks" style="padding:16px;font-size:15px;background:var(--color-surface)">
+            <p>Subject: [<em>Lab name and role, ex. WHIRLab Manager</em>] interview: Thank you for your time!</p>
+            <p>Hi Dr. [Name],</p>
+            <p>I want to thank you for taking the time to meet with me today and sharing more about [Lab Name, etc.]. Our interview today has solidified my enthusiasm for this position!</p>
+            <p>I appreciated the opportunity to discuss my research experience at Michigan and tell you more about my thesis project. I believe my 2 years of experience running a social psychology lab here have set me up for success to handle the survey building responsibilities and research database project in this role. As I mentioned, I'm very excited about the potential for pursuing additional research projects and immersing myself in your lab culture as well.</p>
+            <p>Please let me know if there is any additional information I can provide.</p>
+            <p>Have a great weekend and I look forward to connecting more soon!</p>
+            <p style="margin:0">All the best,<br>Helen</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="res-phd" style="display:flex;flex-direction:column;gap:12px;border-top:2px solid var(--color-divider);padding-top:32px">
+        <h2 style="margin:0">PhD Applications</h2>
+        <p style="margin:0;font-size:15px;padding:14px 16px;background:var(--color-surface);font-style:italic">Disclaimer: I don’t have a PhD [yet! 💭] and I have not reviewed PhD applications. I’m sharing copies of my actual applications in the hope that they can help you form yours. These aren’t meant to illustrate <span style="font-style:normal">requirements</span> of an app, but rather to get your thoughts flowing on how you can best frame yourself and your experiences.</p>
+        <p style="margin:0">I applied to Social Psychology PhD positions in 2025 for admission in Fall 2026. Other academics have made great, well-informed guides on how to navigate the application process [<em>notably, Dr. Lucy Lai has an all-inclusive one for all stages of the process <a href="https://lucylai.com/blog/gradapps" target="_blank" rel="noopener">here</a></em>]. I’ll defer to them for their more informed resources. I’m including my applications below in the hope that they are helpful to someone else in the same way that reading other applications was during my process 😊</p>
+        <p style="margin:0">My full PhD application materials (CV and essays from Yale, UCLA, and Cornell) are below to show different variations of statements and research proposals.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="assets/docs/devine_gradcv.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="min-width:180px;justify-content:space-between">PhD Curriculum Vitae <span>↗</span></a>
+          <a href="assets/docs/devine_yale.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="min-width:180px;justify-content:space-between">Yale Social Psych <span>↗</span></a>
+          <a href="assets/docs/devine_ucla.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="min-width:180px;justify-content:space-between">UCLA Social &amp; Affective Neuroscience <span>↗</span></a>
+          <a href="assets/docs/devine_cornell.pdf" target="_blank" rel="noopener" class="btn btn-secondary" style="min-width:180px;justify-content:space-between">Cornell Social Psych <span>↗</span></a>
+        </div>
+      </section>
+
+      <section id="res-coldpi" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">Cold Emailing PIs</h3>
+        <div style="border:2px solid var(--color-divider)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;border-bottom:2px solid var(--color-divider)">
+            <h6 style="margin:0">Sample Email</h6>
+            <button class="btn btn-secondary" onClick="{{ emails.coldphd.copy }}" style="font-size:13px;padding:6px 10px">{{ emails.coldphd.label }}</button>
+          </div>
+          <div id="email-coldphd" style="padding:16px;font-size:15px;background:var(--color-surface)">
+            <p>Subject: Prospective PhD student question</p>
+            <p>Dear Dr. [Name],</p>
+            <p>I hope this email finds you well. I am a lab manager for Dr. Kurt Gray in the Deepest Beliefs Lab at The Ohio State University and am applying to Social Psychology PhD programs this fall. I am very interested in your work on [TOPIC], especially [DETAILS]. I wanted to introduce myself and inquire about whether you will be taking a student for the 2026-2027 academic year.</p>
+            <p>A bit more about me: I received a B.S. in Biopsychology, Cognition, and Neuroscience from the University of Michigan in 2024, where I worked with Dr. Amie Gordon. My senior honors thesis tested whether the presence of a close friend makes people less likely to comply with an intrusive consent request (i.e., “Can I search your phone?”). In the past year, I’ve worked with Kurt Gray studying how insights from moral psychology can inform the legal system. Some of my current projects examine whether fearing crime makes you more likely to blame victims of crime and how beliefs about “ideal” victimhood drive legal injustice.</p>
+            <p>Going forward, I’m interested in working more on [SOMETHING RELEVANT TO THEM]. I’m very interested in the possibility of receiving training and mentorship in your lab.</p>
+            <p>I’ve attached my CV for your convenience. Thank you for your time!</p>
+            <p style="margin:0">Best,<br>Helen</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="res-grfp" style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0">NSF GRFP Application</h3>
+        <p style="margin:0">There is a great guide on applying to the NSF Graduate Research Fellowship <a href="https://www.alexhunterlang.com/nsf-fellowship" target="_blank" rel="noopener">here</a> by Dr. Alex Lang. In the hopes that funding for the social sciences will continue, I’m including my successful application from 2026 below.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="assets/docs/devine_nsfgrfp.pdf" target="_blank" rel="noopener" class="btn btn-primary" style="min-width:180px;justify-content:space-between">NSF GRFP Application [2026] <span>↗</span></a></div>
+      </section>
+
+      <section style="border-top:2px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:12px">
+        <h3 style="margin:0">I hope this was helpful! 🫶</h3>
+        <p style="margin:0">I'm happy to help answer questions via email. <em>Also, if you spot any errors on this page, or if you find any resources that would be helpful to add, please email me: <a href="mailto:helen.devine@yale.edu">helen.devine@yale.edu</a></em></p>
+        <p style="margin:0">If you'd like to support my studies with caffeine, you can do so below! ☕</p>
+        <a href="https://buymeacoffee.com/helendevine" target="_blank" rel="noopener" class="btn btn-secondary" style="align-self:flex-start;min-width:200px;justify-content:space-between">Buy me a coffee <span>↗</span></a>
+      </section>
+    </article>
+  </div>
+</div>
+</sc-if>
+
+<!-- ═════════ CV ═════════ -->
+<sc-if value="{{ isCv }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="CV">
+  <section style="padding:56px 0 32px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h6 style="margin:0;color:var(--color-accent-700)">Curriculum vitae</h6>
+      <h1 style="font-size:clamp(28px, 3.4vw, 40px);line-height:1.1;letter-spacing:-0.02em;margin:0;display:flex;align-items:center;gap:20px"><img src="assets/stamps/cv.svg" alt="" style="flex:none;width:clamp(52px, 5vw, 68px);height:auto;transform:rotate(-4deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));transition:transform .25s" style-hover="transform:rotate(3deg) scale(1.08)"><span>CV</span></h1>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="assets/Devine_CV.pdf" target="_blank" rel="noopener" class="btn btn-primary" style="min-width:200px;justify-content:space-between;padding:12px 16px;font-size:15px">Download full CV (PDF) <span>↓</span></a>
+    </div>
+  </section>
+  <section style="border-top:2px solid var(--color-divider);padding-top:24px">
+    <object data="assets/Devine_CV.pdf#view=FitH" type="application/pdf" aria-label="Helen Devine CV" style="display:block;width:100%;height:max(720px, calc(100vh - 140px));border:2px solid var(--color-divider);background:var(--color-surface)">
+      <div style="padding:32px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+        <div style="font-weight:800;font-family:var(--font-heading);font-size:18px">Your browser can’t display the PDF here.</div>
+        <a href="assets/Devine_CV.pdf" target="_blank" rel="noopener" class="btn btn-primary">Open the CV ↗</a>
+      </div>
+    </object>
+  </section>
+</div>
+</sc-if>
+
+</main>
+</div>
+
+<footer data-screen-label="Contact" style="margin-top:64px;background:var(--brand-navy, #00356b);color:var(--brand-on, #ffffff)">
+  <div style="max-width:1280px;margin:0 auto;padding:56px 24px 32px;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        
+        <a href="mailto:helen.devine@yale.edu" style="color:inherit;font-size:clamp(20px, 2.6vw, 28px);font-weight:800;font-family:var(--font-heading);text-decoration-thickness:2px">helen.devine@yale.edu</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 20px">
+        <sc-for list="{{ socials }}" as="s" hint-placeholder-count="5">
+          <a href="{{ s.url }}" target="_blank" rel="noopener" style="color:inherit;font-weight:600;font-size:16px">{{ s.label }} ↗</a>
+        </sc-for>
+      </div>
+    </div>
+    <div style="border-top:2px solid var(--brand-rule, #a7b1bf);padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px">
+      <span>© 2026 Helen Devine</span>
+      
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bodyFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Source Serif&quot;,&quot;Newsreader&quot;,&quot;Literata&quot;],&quot;default&quot;:&quot;Literata&quot;,&quot;tsType&quot;:&quot;'Source Serif' | 'Newsreader' | 'Literata'&quot;,&quot;section&quot;:&quot;Typography&quot;}}">
+class Component extends DCLogic {
+  state = { wide: true, c: null, route: 'home', dark: false, q: '', ptype: 'All', topic: 'all', open: null, copied: null, tkind: 'All', role: 'All', fig: null, figTopic: 'all' };
+
+  componentDidMount() {
+    this.konamiInit();
+    window.__hdConfetti = () => this.confetti();
+    import(new URL('./content.js', location.href).href).then(m => this.setState({ c: m.default }));
+    this.onHash = () => { this.setState({ route: this.parseRoute(), open: null }); window.scrollTo(0, 0); };
+    window.addEventListener('hashchange', this.onHash);
+    let dark = false;
+    try { const s = localStorage.getItem('hd-theme'); dark = s ? s === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+    this.mq = matchMedia('(min-width: 640px)'); this.mq2 = matchMedia('(min-width: 1180px)'); this.onMq = () => this.setState({ wide: this.mq.matches, xwide: this.mq2.matches }); this.mq2.addEventListener('change', this.onMq); this.mq.addEventListener('change', this.onMq);
+    this.setState({ route: this.parseRoute(), dark, wide: this.mq.matches, xwide: this.mq2.matches });
+    this.applyTheme(dark);
+    this.applyFont();
+  }
+  applyFont() {
+    const map = {
+      'Source Serif': '"Source Serif 4", Georgia, serif',
+      'Newsreader': '"Newsreader", Georgia, serif',
+      'Literata': '"Literata", Georgia, serif',
+    };
+    const f = map[this.props.bodyFont] || map['Literata'];
+    if (this._font !== f) { this._font = f; document.documentElement.style.setProperty('--font-body', f); document.body.style.fontSize = this.props.bodyFont === 'Newsreader' ? '17px' : '16px'; }
+  }
+  componentDidUpdate() { this.applyFont(); }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.onHash); window.removeEventListener('keydown', this.onKonami); this.applyTheme(false); }
+
+  konamiInit() {
+    const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let i = 0;
+    this.onKonami = e => {
+      const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      i = k === seq[i] ? i + 1 : (k === seq[0] ? 1 : 0);
+      if (i === seq.length) { i = 0; this.confetti(); }
+    };
+    window.addEventListener('keydown', this.onKonami);
+  }
+
+  confetti() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cv = document.createElement('canvas'), dpr = devicePixelRatio || 1, W = innerWidth, H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    Object.assign(cv.style, { position: 'fixed', inset: '0', width: W + 'px', height: H + 'px', pointerEvents: 'none', zIndex: 9999 });
+    document.body.appendChild(cv);
+    const ctx = cv.getContext('2d'); ctx.scale(dpr, dpr);
+    const cols = ['#00356b', '#00274c', '#286dc0', '#a7b1bf', '#c9d1db', '#ffffff'];
+    const P = [];
+    [[W * 0.2, H], [W * 0.8, H], [W * 0.5, H * 0.35]].forEach(([x, y], s) => {
+      for (let n = 0; n < 90; n++) {
+        const a = s === 2 ? Math.random() * Math.PI * 2 : -Math.PI / 2 + (s ? -1 : 1) * (0.15 + Math.random() * 0.45);
+        const v = s === 2 ? 4 + Math.random() * 7 : 13 + Math.random() * 9;
+        P.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, w: 6 + Math.random() * 6, h: 3 + Math.random() * 4, r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4, c: cols[n % cols.length], d: s === 2 ? 12 : 0 });
+      }
+    });
+    const t0 = performance.now();
+    const tick = t => {
+      ctx.clearRect(0, 0, W, H);
+      let alive = false;
+      for (const p of P) {
+        if (p.d > 0) { p.d--; continue; }
+        p.vy += 0.32; p.vx *= 0.985; p.vy *= 0.985; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+        if (p.y < H + 20) alive = true;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.scale(1, Math.cos(p.r * 2));
+        ctx.fillStyle = p.c; ctx.strokeStyle = 'rgba(0,39,76,.35)'; ctx.lineWidth = 0.6;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); if (p.c === '#ffffff') ctx.strokeRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+      if (alive && t - t0 < 6000) requestAnimationFrame(tick); else cv.remove();
+    };
+    requestAnimationFrame(tick);
+  }
+
+  parseRoute() {
+    const h = location.hash.replace(/^#\/?/, '').split('?')[0];
+    return ['research', 'publications', 'talks', 'news', 'cv', 'resources'].includes(h) ? h : 'home';
+  }
+
+  applyTheme(isDark) {
+    // Yale blue / Michigan navy, silver and white
+    const light = {
+      '--color-bg': '#ffffff', '--color-surface': '#eceef2', '--color-text': '#141b26',
+      '--color-divider': 'color-mix(in srgb, #141b26 35%, transparent)',
+      '--color-accent': '#00356b', '--color-accent-600': '#002a58', '--color-accent-700': '#00224a',
+      '--color-accent-100': '#e6ecf5', '--color-accent-800': '#00224a',
+      '--color-neutral-100': '#f1f3f6', '--color-neutral-800': '#3a4250',
+      '--brand-navy': '#00356b', '--brand-on': '#ffffff', '--brand-rule': '#a7b1bf',
+      '--side-bg': '#00356b', '--side-text': '#ffffff', '--side-accent': '#ffffff', '--side-accent-600': '#dfe6ef', '--side-accent-700': '#c9d8ee', '--side-divider': 'color-mix(in srgb, #ffffff 35%, transparent)',
+      '--shadow-md': '0 3px 10px color-mix(in srgb, #00274c 16%, transparent)',
+    };
+    const dark = {
+      '--color-bg': '#0a1422', '--color-surface': '#132236', '--color-text': '#eef1f5',
+      '--color-divider': 'color-mix(in srgb, #c4cbd6 40%, transparent)',
+      '--color-accent': '#8fb3e3', '--color-accent-600': '#b3cbee', '--color-accent-700': '#a9c4ec',
+      '--color-accent-100': '#1a2e4a', '--color-accent-800': '#d3e1f6',
+      '--color-neutral-100': '#1c2a3d', '--color-neutral-800': '#c4cbd6',
+      '--brand-navy': '#00274c', '--brand-on': '#ffffff', '--brand-rule': '#7c8899',
+      '--side-bg': '#ffffff', '--side-text': '#0a1422', '--side-accent': '#00356b', '--side-accent-600': '#002a58', '--side-accent-700': '#00356b', '--side-divider': 'color-mix(in srgb, #0a1422 30%, transparent)',
+    };
+    const vars = isDark ? dark : light;
+    const el = document.documentElement;
+    for (const k in vars) el.style.setProperty(k, vars[k]);
+    el.style.colorScheme = isDark ? 'dark' : 'light';
+  }
+
+  fmt(d) { const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; const [y, m] = d.split('-'); return M[+m - 1] + ' ' + y; }
+  split(a) { const k = 'Devine, H.'; const i = a.indexOf(k); return i < 0 ? { pre: a, me: '', post: '' } : { pre: a.slice(0, i), me: k, post: a.slice(i + k.length) }; }
+  goTopic(topic, route) { this.setState({ topic, ptype: 'All', tkind: 'All', role: 'All', q: '' }); location.hash = '#/' + route; }
+
+  renderVals() {
+    const s = this.state, c = s.c || { publications: [], writing: [], talks: [], news: [], topics: [], cv: {}, profile: { links: [] } };
+    const r = s.route;
+    const byDate = (a, b) => b.date.localeCompare(a.date);
+    const topicOk = t => s.topic === 'all' || (t || []).includes(s.topic);
+    const ql = s.q.trim().toLowerCase();
+    const qOk = (...f) => !ql || f.join(' ').toLowerCase().includes(ql);
+
+    const nav = [['Home',''],['Research','research'],['Publications','publications'],['Presentations','talks'],['News','news'],['CV','cv'],['Resources','resources']]
+      .map(([label, k]) => ({ label, href: '#/' + k, current: r === (k || 'home') ? 'page' : undefined }));
+
+    const topicChips = [{ id: 'all', label: 'All topics' }, ...c.topics].map(t => ({
+      label: t.label, cls: s.topic === t.id ? 'btn-primary' : 'btn-secondary',
+      onClick: () => this.setState({ topic: t.id }),
+    }));
+
+    // Publications
+    const pAll = c.publications.slice().sort(byDate);
+    const pubs = pAll
+      .map(p => {
+        const year = p.date.slice(0, 4), doiUrl = p.doi ? 'https://doi.org/' + p.doi : '';
+        const citation = `${p.authors} (${year}). ${p.title}. ${p.venue}.${doiUrl ? ' ' + doiUrl : ''}`;
+        const open = s.open === p.id;
+        return { ...p, ...this.split(p.authors), year, doiUrl, hasDoi: !!doiUrl, citation, open, chev: open ? '−' : '+',
+          hasAbstract: !!p.abstract, hasPodcast: !!p.podcast,
+          badges: [['Osf','osf','OSF project'],['Prereg','prereg','Preregistered'],['Data','data','Open data'],['Materials','materials','Open materials'],['Code','code','Open code']]
+            .filter(([k, key]) => (p.openScience || {})[key])
+            .map(([k, key, label]) => ({ ['is' + k]: true, href: p.openScience[key], title: label, label })),
+          hasOpen: ['osf','prereg','data','materials','code'].some(k => (p.openScience || {})[k]),
+          toggle: () => this.setState({ open: open ? null : p.id }),
+          copyLabel: s.copied === p.id ? 'Copied ✓' : 'Copy citation',
+          copy: () => { navigator.clipboard && navigator.clipboard.writeText(citation); this.setState({ copied: p.id }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: null }), 1600); },
+        };
+      });
+    const writingOk = true;
+    const wAll = writingOk ? c.writing.map(w => ({ ...w, when: this.fmt(w.date) })) : [];
+    const featuredW = wAll.filter(w => w.featured);
+    const writing = wAll.filter(w => !w.featured);
+    const ptypes = ['All', 'Journal article', 'Preprint', 'Honors thesis', 'Writing'].map(t => ({
+      label: { 'All': 'All', 'Journal article': 'Journal articles', 'Preprint': 'Preprints', 'Honors thesis': 'Thesis', 'Writing': 'Science writing' }[t], on: s.ptype === t, pick: () => this.setState({ ptype: t }),
+    }));
+    const showPubs = pubs.length > 0;
+    const nShown = (showPubs ? pubs.length : 0) + writing.length;
+
+    // Talks
+    const tAll = c.talks.slice().sort(byDate);
+    const isMine = t => t.presenter ?? t.authors.trim().startsWith('Devine');
+    const talks = tAll.filter(t => (s.tkind === 'All' || s.tkind === t.kind) && (s.role === 'All' || (s.role === 'Me' ? isMine(t) : !isMine(t) && t.kind !== 'Mentored')))
+      .map(t => ({ ...t, ...this.split(t.authors), when: this.fmt(t.date), hasAward: !!t.award, hasLinks: t.links.length > 0 }));
+    const tkinds = [['All','All'],['Talk','Talks'],['Poster','Posters'],['Mentored','Mentored student work']].map(([k, label]) => ({
+      label, on: s.tkind === k, pick: () => this.setState({ tkind: k }),
+    }));
+
+    // News
+    const nAll = c.news.slice().sort(byDate).map(n => ({ ...n, when: this.fmt(n.date), month: this.fmt(n.date).split(' ')[0], hasUrl: !!n.url }));
+    const newsGroups = [];
+    nAll.forEach(n => { const y = n.date.slice(0, 4); let g = newsGroups.find(g => g.year === y); if (!g) newsGroups.push(g = { year: y, items: [] }); g.items.push(n); });
+
+    // Research areas
+    const research = {};
+    ['victims', 'law', 'moral', 'relationships'].forEach(id => research[id] = { items: [], count: 0, go: () => {} });
+    c.topics.forEach(t => {
+      const works = [
+        ...pAll.filter(p => p.topics.includes(t.id)).map(p => ({ title: p.title, meta: p.venue.split(',')[0] + ', ' + p.date.slice(0, 4), date: p.date })),
+        ...tAll.filter(x => x.kind !== 'Mentored' && x.topics.includes(t.id)).map(x => ({ title: x.title, meta: x.kind + ', ' + x.date.slice(0, 4), date: x.date })),
+      ].sort(byDate);
+      const all = works.length + tAll.filter(x => x.kind === 'Mentored' && x.topics.includes(t.id)).length;
+      research[t.id] = { items: works.slice(0, 3), count: tAll.filter(x => x.topics.includes(t.id)).length, go: () => this.goTopic(t.id, 'talks') };
+    });
+
+    // Figure
+    const figYears = ['2023', '2024', '2025', '2026'];
+    const rowsDef = [
+      { label: 'Papers', items: pAll.map(p => ({ kind: p.type, date: p.date, title: p.title, venue: p.venue, topics: p.topics })) },
+      { label: 'Presentations', items: tAll.filter(t => t.kind !== 'Mentored').map(t => ({ kind: t.kind, date: t.date, title: t.title, venue: t.venue + ' · ' + t.place, topics: t.topics })) },
+      { label: 'Mentored', items: tAll.filter(t => t.kind === 'Mentored').map(t => ({ kind: 'Mentored student work', date: t.date, title: t.title, venue: t.venue, topics: t.topics })) },
+      { label: 'Writing', items: c.writing.map(w => ({ kind: 'Science writing', date: w.date, title: w.title, venue: 'Moral Understanding (Substack)', topics: ['moral'] })) },
+    ];
+    let figSel = null;
+    const figRows = rowsDef.map((row, ri) => ({
+      label: row.label,
+      cells: figYears.map(y => ({
+        items: row.items.filter(i => i.date.startsWith(y)).sort((a, b) => a.date.localeCompare(b.date)).map((i, ii) => {
+          const key = ri + '-' + i.date + '-' + i.title;
+          const match = s.figTopic === 'all' || i.topics.includes(s.figTopic);
+          const sel = s.fig === key;
+          if (sel) figSel = { kind: i.kind, when: this.fmt(i.date), title: i.title, venue: i.venue };
+          return { title: i.title, bg: sel || (match && s.figTopic !== 'all') ? 'var(--color-accent)' : 'var(--color-text)', op: match ? 1 : 0.15,
+            outline: sel ? '2px solid var(--color-text)' : 'none', enter: () => this.setState({ fig: key }) };
+        }),
+      })),
+    }));
+    const figChips = [{ id: 'all', label: 'All' }, ...c.topics].map(t => ({
+      label: t.label, cls: s.figTopic === t.id ? 'btn-primary' : 'btn-secondary', onClick: () => this.setState({ figTopic: t.id }),
+    }));
+
+    const cv = c.cv || {};
+    const rows = (a) => (a || []).map(x => ({ when: x.when, what: x.what, sub: [x.where, x.note].filter(Boolean).join(' · ') }));
+    const cvSections = [
+      ['Education', cv.education], ['Research experience', cv.experience], ['Awards & honors', cv.awards],
+      ['Service', cv.service], ['Teaching & mentoring', cv.teaching], ['Skills', cv.skills],
+    ].map(([title, a]) => ({ title, rows: rows(a) }));
+
+    return {
+      nav, asidePos: s.wide ? 'sticky' : 'static', shellWrap: s.wide ? 'nowrap' : 'wrap', shellGap: s.xwide ? '48px' : '28px', asideW: !s.wide ? '100%' : s.xwide ? '232px' : '188px', asideMax: s.wide ? 'calc(100vh - 114px)' : 'none', tocPos: s.xwide ? 'sticky' : 'static', dark: s.dark, light: !s.dark,
+      toggleDark: () => { const d = !s.dark; this.setState({ dark: d }); this.applyTheme(d); try { localStorage.setItem('hd-theme', d ? 'dark' : 'light'); } catch (e) {} },
+      isHome: r === 'home', isResearch: r === 'research', isPubs: r === 'publications', isTalks: r === 'talks', isNews: r === 'news', isCv: r === 'cv',
+      topicChips, q: s.q, onQ: e => this.setState({ q: e.target.value }), ptypes, pubs, writing, showPubs, showWriting: wAll.length > 0, featuredW, hasFeatured: featuredW.length > 0,
+      noPubs: !!s.c && nShown === 0, pubCount: `${nShown} of ${pAll.length + c.writing.length}`,
+      resetFilters: () => this.setState({ q: '', ptype: 'All', topic: 'all', tkind: 'All', role: 'All' }),
+      talks, tkinds, roles: [['All','All'],['Me','Presented by me'],['Co','Co-authored']].map(([k, label]) => ({ label, on: s.role === k, pick: () => this.setState({ role: k }) })), noTalks: !!s.c && talks.length === 0, talkCount: `${talks.length} of ${tAll.length}`,
+      newsGroups, latestNews: nAll.slice(0, 4),
+      recentPubs: pAll.filter(p => p.type === 'Journal article').slice(0, 3).map(p => ({ title: p.title, venue: p.venue.split(',')[0], year: p.date.slice(0, 4), doiUrl: 'https://doi.org/' + p.doi })),
+      research, figYears, figRows, figChips, hasFig: !!figSel, noFig: !figSel, figSel: figSel || {}, figLeave: () => {},
+      cvSections, socials: c.profile.links, isResources: r === 'resources',
+      toc: [['slack','Post-Bacc Psychology Slack'],['apps','Quick Links to my Applications'],['postbacc','Applying for a Post-Bachelor’s Position in Psychology'],['finding','Finding Positions to Apply For'],['applying','Putting Together an Application'],['cold','Cold Emailing'],['interview','You got an interview!'],['after','After the Interview'],['phd','PhD Applications'],['coldpi','Cold Emailing PIs'],['grfp','NSF GRFP Application']]
+        .map(([id, label]) => ({ label, onClick: () => { const el = document.getElementById('res-' + id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 84, behavior: 'smooth' }); } })),
+      emails: ['coldbacc', 'thanks', 'coldphd'].reduce((o, id) => (o[id] = {
+        label: s.copied === 'email-' + id ? 'Copied ✓' : 'Copy email',
+        copy: () => { const el = document.getElementById('email-' + id); if (el && navigator.clipboard) navigator.clipboard.writeText(el.innerText); this.setState({ copied: 'email-' + id }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: null }), 1600); },
+      }, o), {}),
+    };
+  }
+}
+</script>
+</body>
+</html>
